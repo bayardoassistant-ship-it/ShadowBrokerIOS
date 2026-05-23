@@ -12,7 +12,6 @@
 		A00007 = {isa = PBXBuildFile; fileRef = A00008; };
 		A00009 = {isa = PBXBuildFile; fileRef = A00010; };
 		A00011 = {isa = PBXBuildFile; fileRef = A00012; };
-		A00013 = {isa = PBXBuildFile; fileRef = A00014; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,7 +94,7 @@
 		A00026 = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
-			files = (A00001, A00003, A00005, A00007, A00009, A00011, A00013);
+			files = (A00001, A00003, A00005, A00007, A00009, A00011);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
