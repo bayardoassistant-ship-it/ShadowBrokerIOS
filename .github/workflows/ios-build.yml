@@ -11,8 +11,8 @@ jobs:
     strategy:
       matrix:
         destination:
-          - "platform=iOS Simulator,name=iPhone 16 Pro,OS=18.2"
-          - "platform=iOS Simulator,name=iPad Pro 13-inch (M4),OS=18.2"
+          - "platform=iOS Simulator,name=iPhone 16 Pro"
+          - "platform=iOS Simulator,name=iPad Pro 13-inch"
 
     steps:
       - uses: actions/checkout@v4
