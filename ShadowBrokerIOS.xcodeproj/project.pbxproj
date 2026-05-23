@@ -23,6 +23,7 @@
 		A10012 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowBrokerAPIService.swift; sourceTree = "<group>"; };
 		A10014 = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A10015 = {isa = PBXFileReference; lastKnownFileType = wrapper.pb-project; path = ShadowBrokerIOS.xcodeproj; sourceTree = SOURCE_ROOT; };
+		A10022 = {isa = PBXFileReference; explicitFileType = "wrapper.application"; path = ShadowBrokerIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		/* End PBXFileReference section */
 
 		/* Begin PBXGroup section */
@@ -34,10 +35,16 @@
 			path = ShadowBrokerIOS;
 			sourceTree = "<group>";
 		};
+		A10027 = {
+			isa = PBXGroup;
+			children = (A10022);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		A10017 = {
 			isa = PBXGroup;
 			children = (
-				A10015, A10016,
+				A10015, A10016, A10027,
 			);
 			sourceTree = "<group>";
 		};
@@ -151,10 +158,6 @@
 			defaultConfigurationName = Release;
 		};
 		/* End XCConfigurationList section */
-
-		/* Begin PBXProductReference section */
-		A10022 = {isa = PBXProductReference; explicitFileType = "wrapper.application"; path = ShadowBrokerIOS.app; };
-		/* End PBXProductReference section */
 	};
 	rootObject = A10023;
 }
