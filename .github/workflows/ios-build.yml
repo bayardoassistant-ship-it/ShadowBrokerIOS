@@ -23,6 +23,15 @@ jobs:
         run: |
           xcodebuild -version
           swift --version
+          xcrun simctl runtime list
+
+      - name: Install iOS 18.2 Simulator Runtime
+        run: |
+          if ! xcrun simctl runtime list | grep -q "iOS 18.2"; then
+            sudo xcode-select -s /Applications/Xcode_16.2.app
+            xcversion simulators --install "iOS 18.2" 2>/dev/null || \
+              echo "::warning::Could not install iOS 18.2 simulator, trying fallback"
+          fi
 
       - name: Build (simulator)
         run: |
@@ -33,7 +42,10 @@ jobs:
             -configuration Debug \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \
-            CODE_SIGNING_ALLOWED=NO
+            CODE_SIGNING_ALLOWED=NO \
+            SWIFT_OPTIMIZATION_LEVEL="-Onone" \
+            GCC_OPTIMIZATION_LEVEL=0
+        timeout-minutes: 10
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
