@@ -1,0 +1,160 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {};
+	objectVersion = 56;
+	objects = {
+		/* Begin PBXBuildFile section */
+		A10001 = {isa = PBXBuildFile; fileRef = A10002; };
+		A10003 = {isa = PBXBuildFile; fileRef = A10004; };
+		A10005 = {isa = PBXBuildFile; fileRef = A10006; };
+		A10007 = {isa = PBXBuildFile; fileRef = A10008; };
+		A10009 = {isa = PBXBuildFile; fileRef = A10010; };
+		A10011 = {isa = PBXBuildFile; fileRef = A10012; };
+		A10013 = {isa = PBXBuildFile; fileRef = A10014; };
+		/* End PBXBuildFile section */
+
+		/* Begin PBXFileReference section */
+		A10002 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowBrokerIOSApp.swift; sourceTree = "<group>"; };
+		A10004 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AircraftModels.swift; sourceTree = "<group>"; };
+		A10006 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AircraftMapView.swift; sourceTree = "<group>"; };
+		A10008 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A10010 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AircraftViewModel.swift; sourceTree = "<group>"; };
+		A10012 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowBrokerAPIService.swift; sourceTree = "<group>"; };
+		A10014 = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A10015 = {isa = PBXFileReference; lastKnownFileType = wrapper.pb-project; path = ShadowBrokerIOS.xcodeproj; sourceTree = SOURCE_ROOT; };
+		/* End PBXFileReference section */
+
+		/* Begin PBXGroup section */
+		A10016 = {
+			isa = PBXGroup;
+			children = (
+				A10002, A10012, A10004, A10006, A10008, A10010, A10014,
+			);
+			path = ShadowBrokerIOS;
+			sourceTree = "<group>";
+		};
+		A10017 = {
+			isa = PBXGroup;
+			children = (
+				A10015, A10016,
+			);
+			sourceTree = "<group>";
+		};
+		/* End PBXGroup section */
+
+		/* Begin PBXNativeTarget section */
+		A10018 = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A10019;
+			buildPhases = (
+				A10020, A10021,
+			);
+			buildRules = ();
+			dependencies = ();
+			name = ShadowBrokerIOS;
+			productName = ShadowBrokerIOS;
+			productReference = A10022;
+			productType = "com.apple.product-type.application";
+		};
+		/* End PBXNativeTarget section */
+
+		/* Begin PBXProject section */
+		A10023 = {
+			isa = PBXProject;
+			attributes = { BuildIndependentTargetsInParallel = 1; LastSwiftUpdateCheck = 1620; LastUpgradeCheck = 1620; };
+			buildConfigurationList = A10024;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (en, Base, );
+			mainGroup = A10017;
+			productRefGroup = A10017;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (A10018);
+		};
+		/* End PBXProject section */
+
+		/* Begin PBXResourcesBuildPhase section */
+		A10021 = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = ();
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		/* End PBXResourcesBuildPhase section */
+
+		/* Begin PBXSourcesBuildPhase section */
+		A10020 = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (A10001, A10003, A10005, A10007, A10009, A10011, );
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		/* End PBXSourcesBuildPhase section */
+
+		/* Begin XCBuildConfiguration section */
+		A10025 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = ShadowBrokerIOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shadowbroker.ios;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A10026 = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = ShadowBrokerIOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shadowbroker.ios;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		/* End XCBuildConfiguration section */
+
+		/* Begin XCConfigurationList section */
+		A10019 = {
+			isa = XCConfigurationList;
+			buildConfigurations = (A10025, A10026);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A10024 = {
+			isa = XCConfigurationList;
+			buildConfigurations = (A10025, A10026);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		/* End XCConfigurationList section */
+
+		/* Begin PBXProductReference section */
+		A10022 = {isa = PBXProductReference; explicitFileType = "wrapper.application"; path = ShadowBrokerIOS.app; };
+		/* End PBXProductReference section */
+	};
+	rootObject = A10023;
+}

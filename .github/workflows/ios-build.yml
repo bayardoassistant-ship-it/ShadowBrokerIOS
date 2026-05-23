@@ -27,8 +27,8 @@ jobs:
 
       - name: Build (simulator)
         run: |
-          cd ShadowBrokerIOS
           xcodebuild build \
+            -project ShadowBrokerIOS.xcodeproj \
             -scheme ShadowBrokerIOS \
             -destination "${{ matrix.destination }}" \
             -configuration Debug \
