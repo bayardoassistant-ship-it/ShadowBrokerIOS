@@ -3,7 +3,7 @@ import MapKit
 
 struct AircraftMapView: View {
     @ObservedObject var viewModel: AircraftViewModel
-    @State private var selectedAnnotation: AircraftAnnotation?
+    @State private var selectedAnnotation: Aircraft?
 
     var body: some View {
         Map(coordinateRegion: $viewModel.region,
@@ -107,7 +107,7 @@ struct AircraftAnnotationView: View {
 
                 // Main pin body - glassmorphic circle
                 Circle()
-                    .fill(Color.surfaceContainer.opacity(0.85))
+                    .fill(Color(.systemGray6).opacity(0.85))
                     .frame(width: isHighValue ? 22 : 18, height: isHighValue ? 22 : 18)
                     .overlay(
                         Circle()
@@ -139,7 +139,7 @@ struct AircraftAnnotationView: View {
                     .padding(.vertical, 1)
                     .background(
                         Capsule()
-                            .fill(Color.surface.opacity(0.75))
+                            .fill(Color(.systemGray6).opacity(0.75))
                             .overlay(
                                 Capsule()
                                     .stroke(pinColor.opacity(0.6), lineWidth: 0.5)

@@ -61,7 +61,7 @@ final class AircraftViewModel: ObservableObject {
                 ($0.callsign?.lowercased().contains(q) ?? false) ||
                 ($0.registration?.lowercased().contains(q) ?? false) ||
                 ($0.trackedName?.lowercased().contains(q) ?? false) ||
-                ($0.operator?.lowercased().contains(q) ?? false)
+                ($0.`operator`?.lowercased().contains(q) ?? false)
             }
         }
 
@@ -80,10 +80,10 @@ final class AircraftViewModel: ObservableObject {
         errorMessage = nil
 
         do {
-            let newData = try await api.fetchLiveData()
+            let newData = try await apiService.fetchLiveData()
             // Merge with existing to keep smooth updates
             aircraft = mergeAircraft(current: aircraft, new: newData)
-            lastUpdate = api.lastUpdate
+            lastUpdate = apiService.lastUpdate
         } catch {
             errorMessage = "Failed to fetch aircraft: \(error.localizedDescription)"
             // Seed with demo data if everything fails
@@ -95,8 +95,6 @@ final class AircraftViewModel: ObservableObject {
         isLoading = false
         applyFilters(filters: activeFilters, onlyTracked: showOnlyTracked, search: searchText, allAircraft: aircraft)
     }
-
-    private var lastUpdate: Date?
 
     private func mergeAircraft(current: [Aircraft], new: [Aircraft]) -> [Aircraft] {
         var dict = Dictionary(uniqueKeysWithValues: current.map { ($0.id, $0) })
@@ -141,12 +139,12 @@ final class AircraftViewModel: ObservableObject {
 
     // MARK: - Demo Data (fallback when offline)
     private func demoAircraft() -> [Aircraft] {
-        [
-            Aircraft(id: "AE0001", callsign: "AF1", registration: "92-9000", operator: "United States Air Force", aircraftType: "VC-25A", category: .airForceOne, tags: ["Presidential"], latitude: 38.95, longitude: -77.45, altitude: 39000, speed: 520, heading: 245, verticalRate: 0, squawk: "1111", origin: "Andrews", destination: "LAX", isTracked: true, trackedName: "Air Force One", trackedCategory: "Government", country: "United States", flag: "🇺🇸", militaryForce: "USAF", isUAV: false, uavType: nil, wikiURL: nil, emissions: nil, isGPSJammed: false, lastUpdated: Date()),
-            Aircraft(id: "A00002", callsign: "SAM46", registration: "98-0002", operator: "United States Air Force", aircraftType: "C-32A", category: .presidential, tags: ["VP"], latitude: 39.1, longitude: -77.3, altitude: 41000, speed: 480, heading: 180, verticalRate: -200, squawk: "2222", origin: "Andrews", destination: nil, isTracked: true, trackedName: "Air Force Two", trackedCategory: "Government", country: "United States", flag: "🇺🇸", militaryForce: "USAF", isUAV: false, uavType: nil, wikiURL: nil, emissions: nil, isGPSJammed: false, lastUpdated: Date()),
-            Aircraft(id: "N628TS", callsign: "TSLA1", registration: "N628TS", operator: "SpaceX", aircraftType: "G650", category: .billionaire, tags: ["Elon Musk"], latitude: 37.4, longitude: -122.0, altitude: 45000, speed: 490, heading: 310, verticalRate: 1200, squawk: "4444", origin: "SJC", destination: "AUS", isTracked: true, trackedName: "Elon Musk", trackedCategory: "People", country: "United States", flag: "🇺🇸", militaryForce: nil, isUAV: false, uavType: nil, wikiURL: nil, emissions: nil, isGPSJammed: false, lastUpdated: Date()),
-            Aircraft(id: "RCH123", callsign: "RCH123", registration: nil, operator: "USAF", aircraftType: "KC-135R", category: .militaryTanker, tags: ["Tanker"], latitude: 35.5, longitude: -95.2, altitude: 28000, speed: 420, heading: 90, verticalRate: 0, squawk: "7777", origin: nil, destination: nil, isTracked: true, trackedName: nil, trackedCategory: "Military", country: "United States", flag: "🇺🇸", militaryForce: "USAF", isUAV: false, uavType: nil, wikiURL: nil, emissions: nil, isGPSJammed: false, lastUpdated: Date()),
-            Aircraft(id: "FORTE10", callsign: "FORTE10", registration: "05-2026", operator: "USAF", aircraftType: "RQ-4B", category: .militaryISR, tags: ["Global Hawk"], latitude: 42.1, longitude: -115.8, altitude: 55000, speed: 340, heading: 135, verticalRate: 0, squawk: nil, origin: nil, destination: nil, isTracked: true, trackedName: "RQ-4 Global Hawk", trackedCategory: "UAV", country: "United States", flag: "🇺🇸", militaryForce: "USAF", isUAV: true, uavType: "HALE Surveillance", wikiURL: "https://en.wikipedia.org/wiki/Northrop_Grumman_RQ-4_Global_Hawk", emissions: nil, isGPSJammed: false, lastUpdated: Date())
+        let sampleAircraft: [Aircraft] = [
+            Aircraft(id: "AE0001", callsign: "AF1", registration: "92-9000", `operator`: "United States Air Force", aircraftType: "VC-25A", category: .airForceOne, tags: ["Presidential"], latitude: 38.95, longitude: -77.45, altitude: 39000, speed: 520, heading: 245, verticalRate: 0, squawk: "1111", origin: "Andrews", destination: "LAX", isTracked: true, trackedName: "Air Force One", trackedCategory: "Government", country: "United States", flag: "🇺🇸", militaryForce: "USAF", isUAV: false, uavType: nil, wikiURL: nil, emissions: nil, isGPSJammed: false),
+            Aircraft(id: "A00002", callsign: "SAM46", registration: "98-0002", `operator`: "United States Air Force", aircraftType: "C-32A", category: .presidential, tags: ["VP"], latitude: 39.1, longitude: -77.3, altitude: 41000, speed: 480, heading: 180, verticalRate: -200, squawk: "2222", origin: "Andrews", destination: nil, isTracked: true, trackedName: "Air Force Two", trackedCategory: "Government", country: "United States", flag: "🇺🇸", militaryForce: "USAF", isUAV: false, uavType: nil, wikiURL: nil, emissions: nil, isGPSJammed: false),
+            Aircraft(id: "N628TS", callsign: "TSLA1", registration: "N628TS", `operator`: "SpaceX", aircraftType: "G650", category: .billionaire, tags: ["Elon Musk"], latitude: 37.4, longitude: -122.0, altitude: 45000, speed: 490, heading: 310, verticalRate: 1200, squawk: "4444", origin: "SJC", destination: "AUS", isTracked: true, trackedName: "Elon Musk", trackedCategory: "People", country: "United States", flag: "🇺🇸", militaryForce: nil, isUAV: false, uavType: nil, wikiURL: nil, emissions: nil, isGPSJammed: false),
+            Aircraft(id: "RCH123", callsign: "RCH123", registration: nil, `operator`: "USAF", aircraftType: "KC-135R", category: .militaryTanker, tags: ["Tanker"], latitude: 35.5, longitude: -95.2, altitude: 28000, speed: 420, heading: 90, verticalRate: 0, squawk: "7777", origin: nil, destination: nil, isTracked: true, trackedName: nil, trackedCategory: "Military", country: "United States", flag: "🇺🇸", militaryForce: "USAF", isUAV: false, uavType: nil, wikiURL: nil, emissions: nil, isGPSJammed: false),
+            Aircraft(id: "FORTE10", callsign: "FORTE10", registration: "05-2026", `operator`: "USAF", aircraftType: "RQ-4B", category: .militaryISR, tags: ["Global Hawk"], latitude: 42.1, longitude: -115.8, altitude: 55000, speed: 340, heading: 135, verticalRate: 0, squawk: nil, origin: nil, destination: nil, isTracked: true, trackedName: "RQ-4 Global Hawk", trackedCategory: "UAV", country: "United States", flag: "🇺🇸", militaryForce: "USAF", isUAV: true, uavType: "HALE Surveillance", wikiURL: "https://en.wikipedia.org/wiki/Northrop_Grumman_RQ-4_Global_Hawk", emissions: nil, isGPSJammed: false),
         ]
     }
 }

@@ -3,6 +3,7 @@ import Combine
 
 /// Service for connecting to a ShadowBroker backend instance or public ADS-B sources.
 /// Configure the baseURL to point to your self-hosted ShadowBroker (http://your-server:8000)
+@MainActor
 final class ShadowBrokerAPIService: ObservableObject {
     static let shared = ShadowBrokerAPIService()
 
@@ -185,13 +186,13 @@ final class ShadowBrokerAPIService: ObservableObject {
                 let spd = state.count > 9 ? state[9].doubleValue : nil
                 let hdg = state.count > 10 ? state[10].doubleValue : nil
 
-                let category = classifyAircraft(callsign: callsign, registration: nil, aircraftType: nil, operator: nil)
+                let category = classifyAircraft(callsign: callsign, registration: nil, aircraftType: nil, `operator`: nil)
 
                 let ac = Aircraft(
                     id: icao,
                     callsign: callsign,
                     registration: nil,
-                    operator: nil,
+                    `operator`: nil,
                     aircraftType: nil,
                     category: category,
                     tags: [],
@@ -227,10 +228,10 @@ final class ShadowBrokerAPIService: ObservableObject {
     }
 
     // MARK: - Classification Helpers (mirrors ShadowBroker logic)
-    private func classifyAircraft(callsign: String?, registration: String?, aircraftType: String?, operator: String?) -> AircraftCategory {
+    private func classifyAircraft(callsign: String?, registration: String?, aircraftType: String?, `operator`: String?) -> AircraftCategory {
         let cs = callsign?.uppercased() ?? ""
         let reg = registration?.uppercased() ?? ""
-        let op = operator?.uppercased() ?? ""
+        let op = `operator`?.uppercased() ?? ""
 
         // Presidential / Air Force One detection (from tracked_names.json)
         if cs.contains("AF1") || reg.contains("92-9000") || reg.contains("98-0002") || reg.contains("09-0017") {

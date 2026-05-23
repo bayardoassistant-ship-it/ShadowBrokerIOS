@@ -75,7 +75,7 @@ struct Aircraft: Identifiable, Equatable {
     var icao24: String { id }
     var callsign: String?
     var registration: String?
-    var operator: String?
+    var `operator`: String?
     var aircraftType: String?
     var category: AircraftCategory
     var tags: [String]
