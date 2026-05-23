@@ -6,83 +6,80 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A00001 = {isa = PBXBuildFile; fileRef = A00002; };
-		A00003 = {isa = PBXBuildFile; fileRef = A00004; };
-		A00005 = {isa = PBXBuildFile; fileRef = A00006; };
-		A00007 = {isa = PBXBuildFile; fileRef = A00008; };
-		A00009 = {isa = PBXBuildFile; fileRef = A00010; };
-		A00011 = {isa = PBXBuildFile; fileRef = A00012; };
+		AA0001 = {isa = PBXBuildFile; fileRef = AA0002; };
+		AA0003 = {isa = PBXBuildFile; fileRef = AA0004; };
+		AA0005 = {isa = PBXBuildFile; fileRef = AA0006; };
+		AA0007 = {isa = PBXBuildFile; fileRef = AA0008; };
+		AA0009 = {isa = PBXBuildFile; fileRef = AA0010; };
+		AA0011 = {isa = PBXBuildFile; fileRef = AA0012; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A00002 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowBrokerIOSApp.swift; sourceTree = "<group>"; };
-		A00004 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AircraftModels.swift; path = Models/AircraftModels.swift; sourceTree = "<group>"; };
-		A00006 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AircraftMapView.swift; path = Views/AircraftMapView.swift; sourceTree = "<group>"; };
-		A00008 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = Views/ContentView.swift; sourceTree = "<group>"; };
-		A00010 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AircraftViewModel.swift; path = ViewModels/AircraftViewModel.swift; sourceTree = "<group>"; };
-		A00012 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShadowBrokerAPIService.swift; path = Services/ShadowBrokerAPIService.swift; sourceTree = "<group>"; };
-		A00014 = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A00015 = {isa = PBXFileReference; lastKnownFileType = wrapper.pb-project; path = ShadowBrokerIOS.xcodeproj; sourceTree = SOURCE_ROOT; };
-		A00016 = {isa = PBXFileReference; explicitFileType = wrapper.application; path = ShadowBrokerIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA0002 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowBrokerIOSApp.swift; sourceTree = "<group>"; };
+		AA0004 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models/AircraftModels.swift; sourceTree = "<group>"; };
+		AA0006 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views/AircraftMapView.swift; sourceTree = "<group>"; };
+		AA0008 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views/ContentView.swift; sourceTree = "<group>"; };
+		AA0010 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModels/AircraftViewModel.swift; sourceTree = "<group>"; };
+		AA0012 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services/ShadowBrokerAPIService.swift; sourceTree = "<group>"; };
+		AA0013 = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA0014 = {isa = PBXFileReference; lastKnownFileType = wrapper.pb-project; path = ShadowBrokerIOS.xcodeproj; sourceTree = SOURCE_ROOT; };
+		AA0015 = {isa = PBXFileReference; explicitFileType = wrapper.application; path = ShadowBrokerIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
-		A00017 = {
+		AA0016 = {
 			isa = PBXGroup;
-			children = (A00002, A00014, A00018, A00019, A00020, A00021);
+			children = (AA0002, AA0004, AA0006, AA0008, AA0010, AA0012, AA0013);
+			name = ShadowBrokerIOS;
 			path = ShadowBrokerIOS;
 			sourceTree = "<group>";
 		};
-		A00018 = {isa = PBXGroup; children = (A00004); name = Models; path = Models; sourceTree = "<group>"; };
-		A00019 = {isa = PBXGroup; children = (A00006, A00008); name = Views; path = Views; sourceTree = "<group>"; };
-		A00020 = {isa = PBXGroup; children = (A00010); name = ViewModels; path = ViewModels; sourceTree = "<group>"; };
-		A00021 = {isa = PBXGroup; children = (A00012); name = Services; path = Services; sourceTree = "<group>"; };
-		A00022 = {
+		AA0017 = {
 			isa = PBXGroup;
-			children = (A00016);
+			children = (AA0015);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A00023 = {
+		AA0018 = {
 			isa = PBXGroup;
-			children = (A00015, A00017, A00022);
+			children = (AA0014, AA0016, AA0017);
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A00024 = {
+		AA0019 = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A00025;
-			buildPhases = (A00026, A00027);
+			buildConfigurationList = AA0020;
+			buildPhases = (AA0021, AA0022);
 			buildRules = ();
 			dependencies = ();
 			name = ShadowBrokerIOS;
 			productName = ShadowBrokerIOS;
-			productReference = A00016;
+			productReference = AA0015;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		A00028 = {
+		AA0023 = {
 			isa = PBXProject;
 			attributes = { BuildIndependentTargetsInParallel = 1; LastSwiftUpdateCheck = 1620; LastUpgradeCheck = 1620; };
-			buildConfigurationList = A00029;
+			buildConfigurationList = AA0024;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (en, Base);
-			mainGroup = A00023;
-			productRefGroup = A00023;
+			mainGroup = AA0018;
+			productRefGroup = AA0018;
 			projectDirPath = "";
 			projectRoot = "";
-			targets = (A00024);
+			targets = (AA0019);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		A00027 = {
+		AA0022 = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = ();
@@ -91,16 +88,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		A00026 = {
+		AA0021 = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
-			files = (A00001, A00003, A00005, A00007, A00009, A00011);
+			files = (AA0001, AA0003, AA0005, AA0007, AA0009, AA0011);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		A00030 = {
+		AA0025 = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -120,7 +117,7 @@
 			};
 			name = Debug;
 		};
-		A00031 = {
+		AA0026 = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -143,20 +140,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A00025 = {
+		AA0020 = {
 			isa = XCConfigurationList;
-			buildConfigurations = (A00030, A00031);
+			buildConfigurations = (AA0025, AA0026);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A00029 = {
+		AA0024 = {
 			isa = XCConfigurationList;
-			buildConfigurations = (A00030, A00031);
+			buildConfigurations = (AA0025, AA0026);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
 	};
-	rootObject = A00028;
+	rootObject = AA0023;
 }
