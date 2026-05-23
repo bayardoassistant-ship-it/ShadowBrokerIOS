@@ -8,10 +8,6 @@ on:
 jobs:
   build:
     runs-on: macos-15
-    strategy:
-      matrix:
-        destination:
-          - "generic/platform=iOS Simulator"
 
     steps:
       - uses: actions/checkout@v4
@@ -23,22 +19,28 @@ jobs:
         run: |
           xcodebuild -version
           swift --version
-          xcrun simctl runtime list
+          echo "--- Installed runtimes ---"
+          xcrun simctl runtime list 2>/dev/null || echo "no runtimes"
 
-      - name: Install iOS 18.2 Simulator Runtime
+      - name: Install iOS SDK
         run: |
-          if ! xcrun simctl runtime list | grep -q "iOS 18.2"; then
-            sudo xcode-select -s /Applications/Xcode_16.2.app
-            xcversion simulators --install "iOS 18.2" 2>/dev/null || \
-              echo "::warning::Could not install iOS 18.2 simulator, trying fallback"
-          fi
+          xcodebuild -downloadPlatform iOS -quiet || \
+            echo "::warning::xcodebuild download failed, trying xcodes"
+          ls /Applications/Xcode_16.2.app/Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport/ 2>/dev/null || true
+
+      - name: List available Xcodes
+        run: |
+          echo "--- Available Xcodes ---"
+          ls /Applications/ | grep -i xcode || echo "default Xcode only"
+          echo "--- xcodebuild -showsdks ---"
+          xcodebuild -showsdks 2>&1 || true
 
       - name: Build (simulator)
         run: |
           xcodebuild build \
             -project ShadowBrokerIOS.xcodeproj \
             -scheme ShadowBrokerIOS \
-            -destination "${{ matrix.destination }}" \
+            -destination "generic/platform=iOS Simulator" \
             -configuration Debug \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \
