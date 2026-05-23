@@ -12,7 +12,6 @@ jobs:
       matrix:
         destination:
           - "platform=iOS Simulator,name=iPhone 16 Pro"
-          - "generic/platform=iOS Simulator"
 
     steps:
       - uses: actions/checkout@v4
@@ -39,5 +38,5 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ShadowBroker-${{ matrix.destination == 'platform=iOS Simulator,name=iPhone 16 Pro,OS=18.2' && 'iPhone' || 'iPad' }}
+          name: ShadowBrokerIOS
           path: ~/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
