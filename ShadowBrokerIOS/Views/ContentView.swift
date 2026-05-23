@@ -167,7 +167,10 @@ struct SettingsSheet: View {
         NavigationStack {
             Form {
                 Section("Backend") {
-                    TextField("ShadowBroker URL", text: $viewModel.api.baseURL)
+                    TextField("ShadowBroker URL", text: Binding(
+                        get: { ShadowBrokerAPIService.shared.baseURL },
+                        set: { ShadowBrokerAPIService.shared.baseURL = $0 }
+                    ))
                         .textContentType(.URL)
                         .autocapitalization(.none)
                     Text("Point this at your running ShadowBroker instance (docker compose up)")

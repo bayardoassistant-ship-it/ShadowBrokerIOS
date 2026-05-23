@@ -20,7 +20,7 @@ final class AircraftViewModel: ObservableObject {
     @Published var connectionState: ConnectionState = .disconnected
     @Published var lastUpdate: Date?
 
-    private let apiService = ShadowBrokerAPIService.shared
+    let apiService = ShadowBrokerAPIService.shared
     private var refreshTimer: Timer?
     private var cancellables = Set<AnyCancellable>()
 
@@ -33,7 +33,9 @@ final class AircraftViewModel: ObservableObject {
     }
 
     deinit {
-        refreshTimer?.invalidate()
+        Task { @MainActor [weak self] in
+            self?.refreshTimer?.invalidate()
+        }
     }
 
     private func setupBindings() {
@@ -146,5 +148,6 @@ final class AircraftViewModel: ObservableObject {
             Aircraft(id: "RCH123", callsign: "RCH123", registration: nil, `operator`: "USAF", aircraftType: "KC-135R", category: .militaryTanker, tags: ["Tanker"], latitude: 35.5, longitude: -95.2, altitude: 28000, speed: 420, heading: 90, verticalRate: 0, squawk: "7777", origin: nil, destination: nil, isTracked: true, trackedName: nil, trackedCategory: "Military", country: "United States", flag: "🇺🇸", militaryForce: "USAF", isUAV: false, uavType: nil, wikiURL: nil, emissions: nil, isGPSJammed: false, lastUpdated: Date()),
             Aircraft(id: "FORTE10", callsign: "FORTE10", registration: "05-2026", `operator`: "USAF", aircraftType: "RQ-4B", category: .militaryISR, tags: ["Global Hawk"], latitude: 42.1, longitude: -115.8, altitude: 55000, speed: 340, heading: 135, verticalRate: 0, squawk: nil, origin: nil, destination: nil, isTracked: true, trackedName: "RQ-4 Global Hawk", trackedCategory: "UAV", country: "United States", flag: "🇺🇸", militaryForce: "USAF", isUAV: true, uavType: "HALE Surveillance", wikiURL: "https://en.wikipedia.org/wiki/Northrop_Grumman_RQ-4_Global_Hawk", emissions: nil, isGPSJammed: false, lastUpdated: Date()),
         ]
+        return sampleAircraft
     }
 }

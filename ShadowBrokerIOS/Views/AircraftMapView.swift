@@ -178,10 +178,10 @@ struct AircraftDetailCard: View {
             Divider()
 
             HStack(spacing: 20) {
-                StatView(title: "ALT", value: aircraft.altitude.map { "\($0 / 1000, specifier: "%.0f")k ft" } ?? "—")
-                StatView(title: "SPD", value: aircraft.speed.map { "\($0, specifier: "%.0f") kt" } ?? "—")
+                StatView(title: "ALT", value: aircraft.altitude.map { String(format: "%.0fk ft", $0 / 1000) } ?? "—")
+                StatView(title: "SPD", value: aircraft.speed.map { String(format: "%.0f kt", $0) } ?? "—")
                 StatView(title: "HDG", value: aircraft.heading.map { "\(Int($0))°" } ?? "—")
-                StatView(title: "VR", value: aircraft.verticalRate.map { "\($0 > 0 ? "+" : "")\($0 / 100, specifier: "%.0f")00 fpm" } ?? "—")
+                StatView(title: "VR", value: aircraft.verticalRate.map { "\($0 > 0 ? "+" : "")\(String(format: "%.0f", $0 / 100))00 fpm" } ?? "—")
             }
 
             if let force = aircraft.militaryForce {
