@@ -1,0 +1,43 @@
+name: Build iOS
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-15
+    strategy:
+      matrix:
+        destination:
+          - "platform=iOS Simulator,name=iPhone 16 Pro,OS=18.2"
+          - "platform=iOS Simulator,name=iPad Pro 13-inch (M4),OS=18.2"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_16.2.app
+
+      - name: Show build info
+        run: |
+          xcodebuild -version
+          swift --version
+
+      - name: Build (simulator)
+        run: |
+          cd ShadowBrokerIOS
+          xcodebuild build \
+            -scheme ShadowBrokerIOS \
+            -destination "${{ matrix.destination }}" \
+            -configuration Debug \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ShadowBroker-${{ matrix.destination == 'platform=iOS Simulator,name=iPhone 16 Pro,OS=18.2' && 'iPhone' || 'iPad' }}
+          path: ~/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
